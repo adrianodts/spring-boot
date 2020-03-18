@@ -1,10 +1,7 @@
-project/
-
-.settings/
-
-*.project
-
-*.classpath
+/.project/
+/.settings/
+/.project
+/.classpath
 
 # Compiled class file
 *.class
