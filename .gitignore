@@ -1,10 +1,7 @@
+project/
+
 # Compiled class file
 *.class
-
-
-
-
-    #git push --set-upstream origin master
 
 # Log file
 *.log
