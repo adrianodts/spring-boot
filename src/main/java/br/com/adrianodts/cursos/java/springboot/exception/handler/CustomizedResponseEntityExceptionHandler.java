@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 
 import br.com.adrianodts.cursos.java.springboot.exception.ExceptionResponse;
+import br.com.adrianodts.cursos.java.springboot.exception.ResourceNotFoundException;
 import br.com.adrianodts.cursos.java.springboot.exception.UnsuportedCalculadoraException;
 
 @ControllerAdvice
@@ -26,5 +27,11 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 	public final ResponseEntity<ExceptionResponse> handleBadRequestException(Exception ex, WebRequest req) {
 		ExceptionResponse response = new ExceptionResponse(new Date(), ex.getMessage(), req.getDescription(false));
 		return new ResponseEntity<ExceptionResponse>(response, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(ResourceNotFoundException.class)
+	public final ResponseEntity<ExceptionResponse> handleResourceNotFoundException(Exception ex, WebRequest req) {
+		ExceptionResponse response = new ExceptionResponse(new Date(), ex.getMessage(), req.getDescription(false));
+		return new ResponseEntity<ExceptionResponse>(response, HttpStatus.NOT_FOUND);
 	}
 }
